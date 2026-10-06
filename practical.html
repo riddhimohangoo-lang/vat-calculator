@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VAT Calculator</title>
+</head>
+<body>
+    <label for="amount">Amount:</label>
+    <input id="amount" type="number" placeholder="Enter amount"><br>
+
+    <label for="vat">VAT %:</label>
+    <input id="vat" type="number" placeholder="Enter VAT %"><br>
+
+    <button type="button" onclick="calculateVAT()">Calculate VAT</button>
+
+    <p id="result"></p>
+    <p id="output"></p>
+
+    <script>
+        function calculateVAT() {
+            // Get values
+            let amount = parseFloat(document.getElementById("amount").value);
+            let vatRate = parseFloat(document.getElementById("vat").value);
+
+            // Check if inputs are valid
+            if (isNaN(amount) || isNaN(vatRate)) {
+                document.getElementById("result").innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            // Calculate VAT
+            let vatAmount = (amount * vatRate) / 100;
+            let total = amount + vatAmount;
+
+            // Output results
+            document.getElementById("result").innerHTML = "The total price after VAT:";
+            document.getElementById("output").innerHTML =
+                "VAT Amount: " + vatAmount.toFixed(2) + "<br>" +
+                "Total (with VAT): " + total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
